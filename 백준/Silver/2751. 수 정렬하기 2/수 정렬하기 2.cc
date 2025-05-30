@@ -10,6 +10,8 @@ int main()
     vector<int> numbers;
     int n, temp;
     cin >> n;
+    
+    numbers.reserve(n);
     for(int i = 0; i < n; i++)
     {
         cin >>temp;
