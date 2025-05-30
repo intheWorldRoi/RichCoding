@@ -11,11 +11,11 @@ int main()
     int n, temp;
     cin >> n;
     
-    numbers.reserve(n);
+    numbers.resize(n);
     for(int i = 0; i < n; i++)
     {
         cin >>temp;
-        numbers.push_back(temp);
+        numbers[i] = (temp);
     }
     sort(numbers.begin(), numbers.end(), [](int a, int b){return a < b;});
     for(int i =0; i <n; i++)
