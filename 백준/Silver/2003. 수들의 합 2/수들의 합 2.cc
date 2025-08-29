@@ -5,37 +5,33 @@ int arr[10000];
 int main()
 {
 	ios::sync_with_stdio(false);
-	cin.tie(NULL); cout.tie(NULL);
+cin.tie(NULL); cout.tie(NULL);
 
-	int N, M;
-	cin >> N >> M;
+int N, M, answer{ 0 }, start{ 0 }, end{ 0 };
 
-	int answer{ 0 };
-	for (int i = 0; i < N; ++i)
+cin >> N >> M;
+
+for (int i = 0; i < N; ++i) 
+	cin >> arr[i];
+
+int temp = arr[start];
+while (start < N && end < N)
+{
+	if (temp == M)
 	{
-		cin >> arr[i];
+		++answer;
+		temp -= arr[start++];
 	}
-
-	for (int i = 0; i < N; ++i)
+	else if (temp > M)
 	{
-		if (arr[i] == M)
-		{
-			++answer;
-			continue;
-		}
-		else if (arr[i] > M) continue;
-		
-		int temp = arr[i];
-		for (int j = i + 1; j < N; ++j)
-		{
-			temp += arr[j];
-			if (temp == M)
-			{
-				++answer;
-				break;
-			}
-		}
+		temp -= arr[start++];
 	}
+	else
+	{
+		++end; 
+		if(end < N) temp += arr[end];
+	}
+}
 
-	cout << answer;
+cout << answer;
 }
