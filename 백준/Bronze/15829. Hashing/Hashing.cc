@@ -16,7 +16,7 @@ int main()
 	cin >> L >> str;
 
 
-	int H{ 0 };
+	unsigned long long H{ 0 };
 	for (int i = 0; i < L; i++)
 	{
 		H += (alphabet.find(str[i])+1) * pow(31, i);
