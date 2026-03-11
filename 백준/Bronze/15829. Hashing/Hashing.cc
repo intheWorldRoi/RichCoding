@@ -9,20 +9,17 @@ int main()
 	ios::sync_with_stdio(false);
 	cin.tie(NULL); cout.tie(NULL);
 
-	string alphabet = "abcdefghijklmnopqrstuvwxyz";
-
 	int L;
 	string str;
 	cin >> L >> str;
 
-
 	unsigned long long H{ 0 };
-	for (int i = 0; i < L; i++)
+	unsigned long long power{ 1 };
+	for (int i = 0; i < str.size(); i++)
 	{
-		H += (alphabet.find(str[i])+1) * pow(31, i);
+		int val = str[i] - 'a' + 1;
+		H = (H + val * power) % M;
+		power = (power * 31) % M;
 	}
-
-	H %= M;
-
 	cout << H;
 }
