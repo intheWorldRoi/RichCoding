@@ -2,37 +2,27 @@
 #include <string>
 using namespace std;
 
-bool Contains(string _s, char _target)
-{
-	for (int i = 0; i < _s.size(); i++)
-	{
-		if (_s[i] == _target)
-		{
-			return 1;
-		}
-	}
-	return 0;
-}
-
 int stack[10000];
 int main()
 {
 	ios::sync_with_stdio(false);
-	int top{ 0 };
+	cin.tie(NULL); cout.tie(NULL);
 
+	int top{ 0 };
 	int N;
 	cin >> N;
-	cin.ignore();
 
 	string temp;
 	for (int i = 0; i < N; i++)
 	{
-		getline(cin, temp);
-		if (Contains(temp, 'h'))
+		cin >> temp;
+		if (temp == "push")
 		{
-			stack[top++] = stoi(temp.substr(5, temp.size() - 5));
+			int t;
+			cin >> t;
+			stack[top++] = t;
 		}
-		else if (Contains(temp, 'p') && !Contains(temp,'t'))
+		else if (temp == "pop")
 		{
 			if (top == 0) cout << "-1\n";
 			else
@@ -41,16 +31,16 @@ int main()
 				top--;
 			}
 		}
-		else if (Contains(temp, 'z'))
+		else if (temp == "size")
 		{
 			cout << top << "\n";
 		}
-		else if (Contains(temp, 'y'))
+		else if (temp == "empty")
 		{
 			bool isEmpty = (top == 0) ? 1 : 0;
 			cout << isEmpty << "\n";
 		}
-		else if (Contains(temp, 't'))
+		else if (temp == "top")
 		{
 			if (top == 0) cout << "-1\n";
 			else cout << stack[top-1] << "\n";
